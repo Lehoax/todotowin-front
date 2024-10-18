@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 
 
@@ -7,20 +8,45 @@ const Signup = () =>{
     const [password, setPassword] = useState('');
     const [Repetepassword, setRepetepassword] = useState('');
     const [error, setError] = useState('');
+    const [success, setSuccess] = useState('');
 
-const handleSubmit = (e) => {
+const handleSubmit = async (e) => {
     e.preventDefault(); 
 
     if (!email || !password) {
         setError('Veuillez entrer un email et un mot de passe.');
         return;
     }
-    if (!Repetepassword || !password) {
+    if (Repetepassword !== password) {
         setError('Les mots de passes ne correspondent pas.');
         return;
     }
-console.log(email);
-}
+    try {
+        // Envoi de la requête POST à l'API avec axios
+        const response = await axios.post('http://localhost:3001/api/user/signup', {
+          email,
+          password,
+        });
+  
+        // Vérification de la réponse
+        if (response.status === 200) {
+          setSuccess('Inscription réussie!');
+          setError('');
+        }
+      } catch (err) {
+        if (err.response) {  
+            console.log(err);
+                      
+          setError('Cette uttilisateur existe déja.');
+        } else if (err.request) {
+            console.log(err);
+
+          setError('Erreur réseau ou serveur.');
+        } else {
+          setError('Erreur inconnue.');
+        }
+        setSuccess('');
+      }}
     return (
       <>
     <div id="Signup" >
