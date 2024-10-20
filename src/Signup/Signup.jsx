@@ -28,10 +28,9 @@ const handleSubmit = async (e) => {
           password,
         });
   
-        // Vérification de la réponse
-        if (response.status === 200) {
+        // Vérification de la réponse        
+        if (response.status === 201) {
           setSuccess('Inscription réussie!');
-          setError('');
         }
       } catch (err) {
         if (err.response) {  
@@ -45,12 +44,13 @@ const handleSubmit = async (e) => {
         } else {
           setError('Erreur inconnue.');
         }
-        setSuccess('');
       }}
     return (
       <>
     <div id="Signup" >
     {error && <p style={{ color: 'red' }}>{error}</p>}
+    {success && <p style={{ color: 'green' }}>{success}</p>}
+
       <form onSubmit={handleSubmit}>
         <div>
           <input
