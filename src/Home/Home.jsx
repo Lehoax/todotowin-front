@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { refreshAccessToken } from '../helpers/authHelper'; // Import du helper
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../helpers/AuthContext'; // Importez le hook
+import { useAuth } from '../helpers/AuthContext';
 import './style.css';
 
 const Home = () => {
@@ -31,7 +31,7 @@ const Home = () => {
   };
 
   const fetchProtectedData = async () => {
-    if (!accessToken) return; // Ne rien faire si le token n'est pas présent
+    if (!accessToken) return; 
     try {
       const email = localStorage.getItem('email');
       const response = await axios.get('http://localhost:3001/api/user/profile', {
@@ -96,11 +96,6 @@ const Home = () => {
       return (
         <>
           <h1>Bienvenue, utilisateur !</h1>
-          {protectedData ? (
-            <div>Données protégées: {JSON.stringify(protectedData)}</div>
-          ) : (
-            <p>Chargement des données protégées...</p>
-          )}
         </>
       );
     } else {

@@ -1,0 +1,19 @@
+#lougout_btn{
+    background-color: transparent;
+    align-self:flex-start;
+    border: none;
+    position: absolute;
+
+}
+
+#lougout_btn:hover{
+    opacity: 50%;
+    cursor: pointer;
+}
+#logout_logo{
+    height: 3rem;
+}
+#logout_group{
+    display: contents;
+    z-index: -1;
+}
