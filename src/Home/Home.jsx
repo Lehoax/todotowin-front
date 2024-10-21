@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { refreshAccessToken } from '../helpers/authHelper'; // Import du helper
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../helpers/AuthContext';
+import { fetchProtectedData } from '../helpers/GetdataHelper'; 
 import './style.css';
 
 const Home = () => {
@@ -20,7 +19,7 @@ const Home = () => {
     } else {
         setIsConnected(false);
     }
-}, [setIsConnected]);
+  }, [setIsConnected]);
 
   const handleClickLogin = () => {
     navigate('/login');
@@ -30,64 +29,11 @@ const Home = () => {
     navigate('/signup');
   };
 
-  const fetchProtectedData = async () => {
-    if (!accessToken) return; 
-    try {
-      const email = localStorage.getItem('email');
-      const response = await axios.get('http://localhost:3001/api/user/profile', {
-        headers: {
-          Authorization: `Bearer ${accessToken}`
-        },
-        body:{
-          email: email
-        },
-        withCredentials: true
-      });
-
-      console.log('Données protégées récupérées:', response.data);
-      setProtectedData(response.data); 
-      setError(null);
-      
-    } catch (error) {
-      if (error.response && error.response.status === 401) {
-        console.log('Access token expiré, tentative de rafraîchissement...');
-
-        try {
-          const email = localStorage.getItem('email');
-          const newAccessToken = await refreshAccessToken();
-          setAccessToken(newAccessToken);
-          localStorage.setItem('accessToken', newAccessToken); // Met à jour le local storage
-          
-          // Retenter la requête avec le nouveau Access Token
-          const retryResponse = await axios.get('http://localhost:3001/api/user/profile', {
-            headers: {
-              Authorization: `Bearer ${accessToken}`
-            },
-            body:{
-              email: email
-            },
-            withCredentials: true
-          });
-
-          console.log('Données protégées après rafraîchissement:', retryResponse.data);
-          setProtectedData(retryResponse.data);
-          setError(null);
-        } catch (refreshError) {
-          console.error('Échec du rafraîchissement du token:', refreshError);
-          setError('Impossible de rafraîchir le token. Veuillez vous reconnecter.');
-          setIsConnected(false); 
-        }
-      } else {
-        console.error('Erreur lors de la récupération des données protégées:', error);
-        setError('Une erreur est survenue lors de la récupération des données.');
-        setIsConnected(false); 
-      }
-    }
-  };
-
   useEffect(() => {
     if (accessToken) {
-      fetchProtectedData();
+      fetchProtectedData(accessToken, setAccessToken, setProtectedData, setError, setIsConnected);
+      console.log(protectedData);
+      
     }
   }, [accessToken]);
 
