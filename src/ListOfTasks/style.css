@@ -1,0 +1,19 @@
+@media (min-width: 1024px) {
+    #list_of_task{
+        margin-left: 50vh;
+        margin-right: 50vh;
+    }
+}
+
+
+#list_of_task{
+    height: 68vh; 
+    overflow-y: auto; 
+}
+#nothing_img{
+    margin-top: 30px;
+    height: 10rem;
+}
+#congrat{
+    color: #023047;
+}

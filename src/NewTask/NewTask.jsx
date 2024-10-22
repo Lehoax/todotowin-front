@@ -96,8 +96,28 @@ const NewTask = () =>{
             </div>
             <button id="new_task_submit" type="submit">Créer</button>
         </form>
-        {error && <div style={{ color: 'red' }}>{error}</div>}
-        {success && <div style={{ color: 'green' }}>{success}</div>}
+        {error && (
+        <div style={{ 
+          color: 'red', 
+          position: 'absolute',  
+          zIndex: 1,
+          width: '100%',            
+          textAlign: 'center'
+        }}>
+          {error}
+        </div>
+      )}
+       {success && (
+        <div style={{ 
+          color: 'green', 
+          position: 'absolute',  
+          zIndex: 1,
+          width: '100%',            
+          textAlign: 'center'
+        }}>
+          {success}
+        </div>
+      )}
 
      </div>
     )

@@ -31,6 +31,7 @@ textarea{
     margin-top: 1.5rem;
     display: flex;
     flex-direction: column;
+    height: 63vh;
 }
 #radio_btn_group{
     display: flex;
