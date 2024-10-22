@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 
 
 const Signup = () =>{
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [Repetepassword, setRepetepassword] = useState('');
-    const [error, setError] = useState('');
-    const [success, setSuccess] = useState('');
+  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [Repetepassword, setRepetepassword] = useState('');
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
 
 const handleSubmit = async (e) => {
     e.preventDefault(); 
@@ -45,8 +47,16 @@ const handleSubmit = async (e) => {
           setError('Erreur inconnue.');
         }
       }}
+
+      const handleClickLogin = () => {
+        navigate('/login');
+      };
+    
     return (
       <>
+       <div id='group_login_btn'>
+          <button className="button" onClick={handleClickLogin}>Connection</button>
+        </div>
     <div id="Signup" >
     {error && <p style={{ color: 'red' }}>{error}</p>}
     {success && <p style={{ color: 'green' }}>{success}</p>}

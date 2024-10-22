@@ -1,5 +1,5 @@
 #home{
-    margin-top: 9rem;
+    margin-top: 6rem;
     margin-bottom: 2rem;
     display: flex;
     flex-direction: column;
@@ -38,7 +38,7 @@ input {
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); 
   }
   #group_login_btn{
-    margin-top: 2rem;
+    margin-top: 12rem;
     display: flex;
     justify-content: space-around;
   }

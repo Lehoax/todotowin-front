@@ -12,3 +12,9 @@
 #img_head{
     height: 9rem;
 }
+#get_profile{
+    z-index: 3;
+    align-self: end;
+    height: 2.5rem;
+    margin: 0.3rem;
+}

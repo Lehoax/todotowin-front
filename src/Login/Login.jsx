@@ -3,9 +3,10 @@ import axios from 'axios';
 import { useAuth } from '../helpers/AuthContext';
 import { Navigate } from 'react-router-dom';
 import ForgotPassword from '../ForgotPassword/ForgotPassword';
-
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+  const navigate = useNavigate();
   const { setIsConnected } = useAuth();
   const [redirect, setRedirect] = useState(false);
   const [email, setEmail] = useState('');
@@ -51,11 +52,18 @@ const Login = () => {
       setSuccess(''); 
     }
   }
-  if (redirect) {
+  if (redirect) {    
     return <Navigate to="/" replace />;
   }
+  const handleClickSignup = () => {
+    navigate('/signup');
+  };
+
   return (
     <>
+     <div id='group_login_btn'>
+          <button className="button" onClick={handleClickSignup}>Inscription</button>
+        </div>
       <div id="login">
         {error && <p style={{ color: 'red' }}>{error}</p>}
         {success && <p style={{ color: 'green' }}>{success}</p>} 

@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import './style.css';
-import add from './add.png'
-import back from './left-arrow.png'
+import add from '../img/add.png'
+import back from '../img/left-arrow.png'
 import NewTask from "../NewTask/NewTask";
 import ListOfTasks from "../ListOfTasks/ListOfTasks";
 

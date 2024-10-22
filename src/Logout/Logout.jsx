@@ -1,5 +1,5 @@
 import React from "react";
-import logoutimg from './logout.png'
+import logoutimg from '../img/logout.png'
 import './style.css'
 import { useAuth } from '../helpers/AuthContext';
 

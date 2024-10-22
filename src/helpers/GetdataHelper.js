@@ -1,4 +1,3 @@
-// helpers/dataHelper.js
 import axios from 'axios';
 import { refreshAccessToken } from './authHelper';
 
@@ -7,15 +6,16 @@ export const fetchProtectedData = async (accessToken, setAccessToken, setProtect
 
   try {
     const email = localStorage.getItem('email');
-    const response = await axios.get('http://localhost:3001/api/user/profile', {
-      headers: {
-        Authorization: `Bearer ${accessToken}`
-      },
-      body: {
-        email: email
-      },
-      withCredentials: true
-    });
+    const response = await axios.post(
+      'http://localhost:3001/api/user/profile',
+      { email: email }, // Envoyer l'email dans le corps de la requête
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}` // Corriger la syntaxe ici
+        },
+        withCredentials: true
+      }
+    );
 
     console.log('Données protégées récupérées:', response.data);
     setProtectedData(response.data);
@@ -31,15 +31,16 @@ export const fetchProtectedData = async (accessToken, setAccessToken, setProtect
         localStorage.setItem('accessToken', newAccessToken); // Met à jour le local storage
         
         // Retenter la requête avec le nouveau Access Token
-        const retryResponse = await axios.get('http://localhost:3001/api/user/profile', {
-          headers: {
-            Authorization: `Bearer ${newAccessToken}`
-          },
-          body: {
-            email: localStorage.getItem('email')
-          },
-          withCredentials: true
-        });
+        const retryResponse = await axios.post(
+          'http://localhost:3001/api/user/profile',
+          { email: localStorage.getItem('email') }, // Réutiliser l'email
+          {
+            headers: {
+              Authorization: `Bearer ${newAccessToken}` // Corriger la syntaxe ici aussi
+            },
+            withCredentials: true
+          }
+        );
 
         console.log('Données protégées après rafraîchissement:', retryResponse.data);
         setProtectedData(retryResponse.data);

@@ -42,7 +42,9 @@ const Home = () => {
     if (isConnected) {
       return (
         <>
+          {error && <div style={{ color: 'red' }}>{error}</div>}
           <Task/>
+
         </>
       );
     } else {
@@ -60,7 +62,6 @@ const Home = () => {
   return (
     <div id="home">
       {renderContent()} 
-      {error && <div style={{ color: 'red' }}>{error}</div>}
     </div>
   );
 };
