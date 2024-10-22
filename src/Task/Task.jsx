@@ -3,6 +3,7 @@ import './style.css';
 import add from './add.png'
 import back from './left-arrow.png'
 import NewTask from "../NewTask/NewTask";
+import ListOfTasks from "../ListOfTasks/ListOfTasks";
 
 
 const Task = () => {
@@ -28,6 +29,7 @@ const Task = () => {
         } else {
           return (
             <>
+            <ListOfTasks/>
              <button id="add_btn" onClick={seeForm}><img src={add}/></button>
             </>
           );
