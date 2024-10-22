@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../helpers/AuthContext';
 import { fetchProtectedData } from '../helpers/GetdataHelper'; 
+import Task from '../Task/Task';
 import './style.css';
 
 const Home = () => {
@@ -41,14 +42,16 @@ const Home = () => {
     if (isConnected) {
       return (
         <>
-          <h1>Bienvenue, utilisateur !</h1>
+          <Task/>
         </>
       );
     } else {
       return (
         <>
+        <div id='group_login_btn'>
           <button className="button" onClick={handleClickLogin}>Connection</button>
           <button className="button" onClick={handleClickSignup}>Inscription</button>
+        </div>
         </>
       );
     }

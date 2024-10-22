@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useAuth } from '../helpers/AuthContext';
 import { Navigate } from 'react-router-dom';
-
+import ForgotPassword from '../ForgotPassword/ForgotPassword';
 
 
 const Login = () => {
@@ -82,6 +82,8 @@ const Login = () => {
             <button type="submit" className='button end_button'>Se connecter</button>
           </div>
         </form>
+        <ForgotPassword/>
+
       </div>
     </>
   )

@@ -1,0 +1,8 @@
+#forgot_link{
+    color: #219EBC;
+    text-decoration: underline;
+}
+#forgot_link:hover{
+    cursor: pointer;
+    opacity: 50%;
+}

@@ -11,7 +11,7 @@ const Header = () =>{
     <>
 
   <div id="header" style={{ position: 'relative' }}>
-      <img style={{ position: 'absolute', zIndex: 0 }} src={logo} alt="logo to do to win" />
+      <img id='img_head' style={{ position: 'absolute', zIndex: 0 }} src={logo} alt="logo to do to win" />
       <p style={{ position: 'absolute', zIndex: 1 }}>12</p>
       <div id='logout_group'>
       {isConnected ?
