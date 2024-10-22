@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from './helpers/AuthContext';
+import { XPProvider } from './helpers/XpContext';
 
 
 
@@ -12,9 +13,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <AuthProvider>
+      <XPProvider>
       <BrowserRouter>
         <App />
       </BrowserRouter>
+      </XPProvider>
     </AuthProvider>
   </React.StrictMode>
 );

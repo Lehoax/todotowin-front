@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { redirect } from "react-router-dom";
+import { useXP } from '../helpers/XpContext';
+
 
 const Done = ({ taskID, refreshTasks }) => {
+  const { xp, setXP } = useXP();
   const [doneTask, setDoneTask] = useState(false);
   const [token, setToken] = useState('');
   const [email, setEmail] = useState('');
@@ -34,6 +37,7 @@ const Done = ({ taskID, refreshTasks }) => {
       );
 
       if (response.status === 200) {
+        setXP(response.data.userXp)
         setError(null);
         console.log("Task marked as done");
         refreshTasks();

@@ -5,8 +5,7 @@ import './style.css';
 const Profile = ({ setCurrentPage }) => {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
-  const [reminder, setReminder] = useState(false); // Initialiser à false
-
+  const [reminder, setReminder] = useState(false); 
   const fetchData = async () => {
     try {
       const userToken = localStorage.getItem('accessToken');
@@ -28,7 +27,7 @@ const Profile = ({ setCurrentPage }) => {
       );
 
       if (response.status === 200) {
-        setReminder(response.data.user.reminder); // Assurez-vous que reminder est un booléen
+        setReminder(response.data.user.reminder); 
         setError(null);
       }
     } catch (err) {
