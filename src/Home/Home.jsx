@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../helpers/AuthContext';
 import { fetchProtectedData } from '../helpers/GetdataHelper'; 
-import Task from '../Task/Task';
 import './style.css';
+import Displaytask from '../DisplayTask/DisplayTask';
+import ListOfTasks from '../ListOfTasks/ListOfTasks';
 
 const Home = () => {
   const [accessToken, setAccessToken] = useState(null);
@@ -43,7 +44,7 @@ const Home = () => {
       return (
         <>
           {error && <div style={{ color: 'red' }}>{error}</div>}
-          <Task/>
+          <ListOfTasks/>
 
         </>
       );

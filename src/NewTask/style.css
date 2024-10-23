@@ -12,11 +12,11 @@
 #add_btn:hover{
     opacity: 70%;
 }
-#back_btn{
+.back_btn{
     background-color: transparent;
     border: none;
 }
-#back_btn:hover{
+.back_btn:hover{
     opacity: 70%;
 }
 textarea{
@@ -31,7 +31,7 @@ textarea{
     margin-top: 1.5rem;
     display: flex;
     flex-direction: column;
-    height: 63vh;
+    height: 60vh;
 }
 #radio_btn_group{
     display: flex;

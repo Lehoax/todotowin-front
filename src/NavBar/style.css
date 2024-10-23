@@ -1,0 +1,9 @@
+.logo_btn{
+    background-color: transparent;
+    border: none;
+    height: 5rem;
+}
+.nav_bar{
+    display: flex;
+    justify-content: space-between;
+}
