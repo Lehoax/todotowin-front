@@ -1,13 +1,14 @@
 import React , {useState}from "react";
 import axios from "axios";
 import './style.css'
-import { Navigate } from 'react-router-dom';
 
 const ForgotPassword = () =>{
     const [forgot, setForgot] = useState('');
     const [email, setEmail] = useState('');
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState('');
+    const serveurURL = process.env.REACT_APP_SERVER_URL;
+
 
     const OnClickForgot = () =>{
         setForgot(true)
@@ -20,7 +21,7 @@ const ForgotPassword = () =>{
           return;
         }
         try {
-          const response = await axios.post('http://localhost:3001/api/user/forgotPassword', {
+          const response = await axios.post(serveurURL+'/user/forgotPassword', {
             email,
           }, {
             withCredentials: true

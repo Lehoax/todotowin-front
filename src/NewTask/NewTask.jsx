@@ -4,6 +4,7 @@ import './style.css';
 
 
 const NewTask = () =>{
+  const serveurURL = process.env.REACT_APP_SERVER_URL;
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(null);
     const [token, setToken] = useState('');
@@ -36,7 +37,7 @@ const NewTask = () =>{
             setError('Veuillez remplir tous les champs')
         }
         try {
-            const response = await axios.post('http://localhost:3001/api/task/newtask', {
+            const response = await axios.post(serveurURL+'/task/newtask', {
                 email,
                 title,
                 description,

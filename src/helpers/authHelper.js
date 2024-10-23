@@ -2,8 +2,10 @@
 
 
     export const refreshAccessToken = async () => {
+        const serveurURL = process.env.REACT_APP_SERVER_URL;
+
         try {
-        const response = await axios.post('http://localhost:3001/api/user/refreshToken', {}, {
+        const response = await axios.post(serveurURL+'/user/refreshToken', {}, {
             withCredentials: true
         });
     

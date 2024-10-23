@@ -2,6 +2,7 @@ import React from "react";
 import logoutimg from '../img/logout.png'
 import './style.css'
 import { useAuth } from '../helpers/AuthContext';
+import { Navigate } from 'react-router-dom';
 
 
 const Logout = () =>{
@@ -11,6 +12,7 @@ const Logout = () =>{
         localStorage.removeItem('accessToken'); 
         localStorage.removeItem('email');
         setIsConnected(false)
+        return <Navigate to="/" replace />;
     }
 
     return(

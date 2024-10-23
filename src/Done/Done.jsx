@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { redirect } from "react-router-dom";
 import { useXP } from '../helpers/XpContext';
 
 
 const Done = ({ taskID, refreshTasks }) => {
+  const serveurURL = process.env.REACT_APP_SERVER_URL;
   const { xp, setXP } = useXP();
   const [doneTask, setDoneTask] = useState(false);
   const [token, setToken] = useState('');
@@ -26,7 +26,7 @@ const Done = ({ taskID, refreshTasks }) => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.post('http://localhost:3001/api/task/donetask', 
+      const response = await axios.post(serveurURL+'/task/donetask', 
         { email, taskId: taskID }, 
         {
           headers: {

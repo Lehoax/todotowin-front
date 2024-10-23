@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './style.css';
 
+
 const Profile = ({ setCurrentPage }) => {
+  const serveurURL = process.env.REACT_APP_SERVER_URL;
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
   const [reminder, setReminder] = useState(false); 
@@ -16,7 +18,7 @@ const Profile = ({ setCurrentPage }) => {
         return; 
       }
 
-      const response = await axios.post('http://localhost:3001/api/user/profile', 
+      const response = await axios.post(serveurURL+'/user/profile', 
         { email: userEmail }, 
         {
           headers: {
@@ -51,7 +53,7 @@ const Profile = ({ setCurrentPage }) => {
         return; 
       }
   
-      const response = await axios.put('http://localhost:3001/api/user/update', 
+      const response = await axios.put(serveurURL+'/user/update', 
         { email: userEmail, reminder }, 
         {
           headers: {

@@ -13,6 +13,7 @@ import axios from 'axios';
 
 
 const Header = () =>{
+  const serveurURL = process.env.REACT_APP_SERVER_URL;
   const { isConnected, setIsConnected } = useAuth();
   const [ seeProfile, setSeeProfile ] = useState(false);
   const { xp, setXP } = useXP();
@@ -34,7 +35,7 @@ const Header = () =>{
         return; 
       }
 
-      const response = await axios.post('http://localhost:3001/api/user/profile', 
+      const response = await axios.post(serveurURL+'/user/profile', 
         { email: userEmail }, 
         {
           headers: {

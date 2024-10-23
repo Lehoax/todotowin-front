@@ -5,6 +5,7 @@ import axios from 'axios';
 
 
 const Signup = () =>{
+  const serveurURL = process.env.REACT_APP_SERVER_URL;
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -25,7 +26,7 @@ const handleSubmit = async (e) => {
     }
     try {
         // Envoi de la requête POST à l'API avec axios
-        const response = await axios.post('http://localhost:3001/api/user/signup', {
+        const response = await axios.post(serveurURL+'/user/signup', {
           email,
           password,
         });
@@ -67,7 +68,7 @@ const handleSubmit = async (e) => {
           placeholder='Email'
             type="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)} // Mise à jour de l'état pour l'email
+            onChange={(e) => setEmail(e.target.value)} 
             required
           />
         </div>
@@ -76,7 +77,7 @@ const handleSubmit = async (e) => {
             placeholder='Mot de passe'
             type="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)} // Mise à jour de l'état pour le mot de passe
+            onChange={(e) => setPassword(e.target.value)} 
             required
           />
         </div>
@@ -85,7 +86,7 @@ const handleSubmit = async (e) => {
           placeholder='Repéter le mot de passe'
             type="password"
             value={Repetepassword}
-            onChange={(e) => setRepetepassword(e.target.value)} // Mise à jour de l'état pour le mot de passe
+            onChange={(e) => setRepetepassword(e.target.value)} 
             required
           />
         </div>

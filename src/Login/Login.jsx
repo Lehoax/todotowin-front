@@ -6,6 +6,7 @@ import ForgotPassword from '../ForgotPassword/ForgotPassword';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+  const serveurURL = process.env.REACT_APP_SERVER_URL;
   const navigate = useNavigate();
   const { setIsConnected } = useAuth();
   const [redirect, setRedirect] = useState(false);
@@ -23,7 +24,7 @@ const Login = () => {
       return;
     }
     try {
-      const response = await axios.post('http://localhost:3001/api/user/login', {
+      const response = await axios.post(serveurURL+'/user/login', {
         email,
         password,
       }, {

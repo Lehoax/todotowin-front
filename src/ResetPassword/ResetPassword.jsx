@@ -3,7 +3,8 @@ import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 
 const ResetPassword = () => {
-  const { token } = useParams(); // Récupération du token depuis l'URL
+  const serveurURL = process.env.REACT_APP_SERVER_URL;
+  const { token } = useParams();
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [success, setSuccess] = useState('');
@@ -19,7 +20,7 @@ const ResetPassword = () => {
     }
 
     try {
-      const response = await axios.post(`http://localhost:3001/api/user/resetPassword/${token}`, {
+      const response = await axios.post(serveurURL+`/user/resetPassword/${token}`, {
         password,
       }, {
         withCredentials: true,

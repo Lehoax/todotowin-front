@@ -5,6 +5,7 @@ import nothing from './nothing.png';
 import './style.css';
 
 const ListOfTasks = () => {
+  const serveurURL = process.env.REACT_APP_SERVER_URL;
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [tasks, setTasks] = useState([]);
@@ -20,7 +21,7 @@ const ListOfTasks = () => {
         return; 
       }
 
-      const response = await axios.post('http://localhost:3001/api/task/seetask', 
+      const response = await axios.post(serveurURL+'/task/seetask', 
         { email: userEmail }, 
         {
           headers: {
